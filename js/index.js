@@ -15,6 +15,29 @@ async function main() {
   let currentPage = 1;
   let rows = 20;
 
+  const select = document.getElementById("select");
+
+  const categories = [
+    ...new Set(postsData.map((product) => product.category)),
+  ];
+
+  categories.forEach((el) => {
+    const option = document.createElement("option");
+    option.textContent = el;
+    option.value = el;
+    option.style.padding = '15px';
+    
+    select.appendChild(option);
+  });
+
+  select.addEventListener('change', () => {
+    let selectedValue = select.value;
+    let filterData = postsData.filter((product) => product.category == selectedValue);
+    currentPage = 1;
+    displayList(filterData, rows, currentPage)
+
+  })
+
   function displayList(arrData, rowPerPage, page) {
     const postsEl = document.querySelector(".posts");
     postsEl.innerHTML = "";
@@ -78,8 +101,19 @@ async function main() {
       p2.style.fontWeight = "bold";
       p2.style.color = "red";
 
+      let a = document.createElement("a");
+      a.innerHTML = '🛒 Add Cart';
+      a.style.float = 'right';
+      a.style.padding = '15px';
+      a.style.color = 'blue';
+      a.style.cursor = 'pointer';
+      a.addEventListener('click', () => {
+        currentData.push(el.title)
+        localStorage.setItem('product_id', JSON.stringify(currentData));
+      })
+
       card2.append(p1, p2);
-      card1.append(p, h1, p3, card2);
+      card1.append(p, h1, p3, card2, a);
       card.append(images, card1);
 
       postsEl.appendChild(card);
@@ -121,6 +155,7 @@ async function main() {
 
   displayList(postsData, rows, currentPage);
   displayPagination(postsData, rows);
+  
 
   async function searchingFetch() {
     try {

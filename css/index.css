@@ -63,4 +63,17 @@ body {
   .search button:hover{
     background-color: blueviolet;
   }
-  
+#select{
+  padding: 15px;
+  background-color: gray;
+  color: white;
+}
+.cart{
+  padding: 0px 20px;
+  color: white;
+  background-color: blue;
+  border-radius: 15px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}

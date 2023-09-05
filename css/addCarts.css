@@ -1,0 +1,35 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+body {
+    background-color: #f1f5f8;
+    font-family: "Open Sans", sans-serif;
+}
+  
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.container h1{
+    text-align: center;
+    margin: 20px 0;
+    font-size: 56px;
+}
+.posts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.back{
+    margin: 20px;
+    float: right;
+    text-decoration-line: none;
+    background-color: blue;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
