@@ -110,6 +110,7 @@ async function main() {
       a.addEventListener('click', () => {
         currentData.push(el.title)
         localStorage.setItem('product_id', JSON.stringify(currentData));
+        alert("Your selected product has been added to the cart!")
       })
 
       card2.append(p1, p2);
